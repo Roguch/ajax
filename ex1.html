@@ -120,19 +120,38 @@
             $("#bt30").click(function () {
                 $("h1").children().css({"border":"solid","border-color":"silver"})
             })
+            $("#bt31").click(function () {
+                $("#exeLoad").load("http://hawkman.fabricadesoftware.ifc.edu.br/~rafael/lojinha/ajax/categorias.php");
+            })
+            $("#bt32").click(function () {
+                $.get("http://hawkman.fabricadesoftware.ifc.edu.br/~rafael/lojinha/ajax/produtos.php",function (dados) {
+                    $("#exeLoad").html(dados);
+                })
+            })
+            $("#bt33").click(function () {
+                var numero = $("#categoria").val();
+                $.get("http://hawkman.fabricadesoftware.ifc.edu.br/~rafael/lojinha/ajax/produtos.php",{ categoria:numero},function (dados) {
+                    $("#exeLoad").html(dados);
+                })
+            })
+
         });
     </script>
 </head>
 <body>
     <header>
         <h1>Página de exercícios - <span class="destaque">jQuery</span></h1>
+        <div id="exeLoad">
+
+        </div>
     </header>
     <section id="conteudo-principal">
         <img src="acesa.jpg" width="100px">
         <p class="texto" id="paragrafo1">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores corporis deserunt dolor dolorem harum hic, illum iste, labore minima necessitatibus sed similique, ut. Expedita impedit ipsa iure nihil nulla.
         </p>
-        <input type="text" value="caixa de entrada de texto">
+        <input type="number"  id="categoria"><br>
+        <input type="text"    value="caixa de entrada de texto">
 
         <ol>
             <li>Primeiro</li>
@@ -178,6 +197,10 @@
         <button id="bt28" class="botao">Questao 28</button>
         <button id="bt29" class="botao">Questao 29</button>
         <button id="bt30" class="botao">Questao 30</button>
+        <button id="bt31" class="botao">Load</button>
+        <button id="bt32" class="botao">Get</button>
+        <button id="bt33" class="botao">Get categoria</button>
+        <button id="bt34" class="botao">Get jason</button>
     </section>
     <footer>
         Desenvolvido por <span class="destaque">Rafael</span>.
